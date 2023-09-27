@@ -1,0 +1,40 @@
+<div class="root">
+  <div class="board">
+    <div class="board-wrapper">
+      <div class="board-columns" cdkDropListGroup>
+        <div class="board-column" *ngFor="let column of board.columns">
+          <div class="column-title">
+            {{ column.name }}
+          </div>
+
+          <div
+            class="tasks-container"
+            cdkDropList
+            [cdkDropListData]="column.tasks"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div class="task" *ngFor="let item of column.tasks" cdkDrag>
+              {{ item }}
+              <app-card [item]="item"></app-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <ui-stepper [customStyle]="myStyle">
+  <ui-step countTitle="myTitle">
+    <header><h1>Form</h1></header>
+    <app-form #formSelector></app-form>
+  </ui-step>
+
+  <ui-step countTitle="myTitle">
+    <header><h1>Form</h1></header>
+    <app-form #formSelector></app-form>
+  </ui-step>
+  <ui-step countTitle="myTitle">
+    <header><h1>Form</h1></header>
+    <app-form #formSelector></app-form>
+  </ui-step>
+</ui-stepper> -->
